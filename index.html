@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Playground — Учебные задачи</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🐍 Python Playground</h1>
+    <div class="header-right">
+      <div class="progress-wrap">
+        <div class="progress-label">Прогресс: <span id="progress-text">0 / 0</span></div>
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      </div>
+      <label class="student-label">
+        Ученик:
+        <input id="student-name" type="text" placeholder="Ваше имя" />
+      </label>
+    </div>
+  </header>
 
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Загружаю Python (Pyodide)... Это может занять 10–20 секунд.</p>
+  </div>
+
+  <main id="app" style="display:none;">
+    <aside class="sidebar">
+      <h2>Задачи</h2>
+      <ul id="task-list"></ul>
+    </aside>
+
+    <section class="content" id="content-area">
+      <div id="task-view" class="task-view">
+        <div class="task-header">
+          <h2 id="task-title"></h2>
+          <span id="task-done-badge" class="done-badge" style="display:none;">✅</span>
+        </div>
+        <p id="task-desc"></p>
+
+        <div class="block">
+          <h3>📦 Доступные данные</h3>
+          <div id="task-vars" class="vars-box"></div>
+        </div>
+
+        <div class="editor-row">
+          <div class="editor-col">
+            <div class="block">
+              <h3>✏️ Ваш код</h3>
+              <textarea id="code-input" spellcheck="false" rows="8"></textarea>
+            </div>
+          </div>
+          <div class="character-col">
+            <img id="character-img" src="images/character.png" alt="Персонаж" />
+          </div>
+        </div>
+
+        <details class="example-block">
+          <summary>📖 Пример решения (открой, если нужна помощь)</summary>
+          <pre id="task-example"></pre>
+        </details>
+
+        <div class="actions">
+          <button id="run-btn" class="btn primary">▶ Запустить код</button>
+          <button id="check-btn" class="btn success">✓ Проверить решение</button>
+          <button id="hint-btn" class="btn ghost">💡 Подсказка</button>
+          <button id="reset-btn" class="btn ghost">↺ Сброс</button>
+        </div>
+
+        <div id="output" class="output" style="display:none;">
+          <h3>Результат</h3>
+          <pre id="output-content"></pre>
+        </div>
+
+        <div id="hint" class="hint" style="display:none;"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Оверлей анимации отправки -->
+  <div id="sending-overlay" class="sending-overlay" style="display:none;">
+    <div class="sending-box">
+      <img id="anim-frame" src="images/animation/frame1.png" alt="Отправка..." class="anim-frame" />
+      <p class="sending-text">Отправляем результат в таблицу...</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+  <script src="tasks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
